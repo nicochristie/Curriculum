@@ -232,6 +232,14 @@ h3 {
     margin-bottom: 12px;
 }
 
+h4 {
+    font-size: 10pt;
+    font-weight: bold;
+    color: #000;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
 /* Timeline design for Work Experience and Education */
 .timeline-section {
     position: relative;
