@@ -1,5 +1,8 @@
 /* CV Styles - Professional Resume Template */
 
+/* Inter font — browser only; for PDF, font must be installed on the system */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
 /* Reset and base styles */
 * {
     margin: 0;
@@ -8,7 +11,7 @@
 }
 
 body {
-    font-family: 'Calibri', 'Arial', sans-serif;
+    font-family: 'Inter', 'Calibri', 'Arial', sans-serif;
     font-size: 10pt;
     line-height: 1.4;
     color: #000;
@@ -58,17 +61,22 @@ body {
     /* Extend header to bleed beyond margins */
     .cv-header {
         margin: 0 -20mm 0 -20mm;
-        padding: 40px 55px 40px 55px;
+        padding: 30px 55px 18px 55px;
     }
 
     .cv-header h1 {
         font-size: 30pt;
-        margin-bottom: 12px;
+        margin-bottom: 6px;
+    }
+
+    .header-headline {
+        font-size: 11pt;
+        margin-bottom: 10px;
     }
 
     .header-photo {
-        width: 150px;
-        height: 150px;
+        width: 170px;
+        height: 170px;
         margin-right: 80px;
     }
 
@@ -87,9 +95,9 @@ body {
         color: #AFD2EF;
     }
 
-    .social-icon {
-        height: 16px;
-        width: 16px;
+    .contact-icon {
+        height: 13px;
+        width: 13px;
     }
 
     .main-content {
@@ -98,35 +106,40 @@ body {
 
     h2 {
         font-size: 13pt;
-        margin-top: 15px;
-        margin-bottom: 8px;
+        margin-top: 10px;
+        margin-bottom: 6px;
     }
 
     h3 {
         font-size: 11pt;
-        margin-top: 15px;
-        margin-bottom: 8px;
+        margin-top: 10px;
+        margin-bottom: 6px;
     }
 
     .job-entry,
     .education-entry {
-        margin-bottom: 12px;
+        margin-bottom: 8px;
     }
 
     .company-name {
         font-size: 11pt;
     }
 
+    .job-title {
+        font-size: 9pt;
+        margin-bottom: 5px;
+    }
+
     .job-tech {
-        margin-bottom: 6px;
+        margin-bottom: 4px;
     }
 
     .about-company {
-        margin-bottom: 10px;
+        margin-bottom: 6px;
     }
 
     .skill-category {
-        margin-bottom: 10px;
+        margin-bottom: 8px;
     }
 
     .skill-tag {
@@ -147,7 +160,7 @@ body {
 .cv-header {
     background: #455A64;
     color: #fff;
-    padding: 40px;
+    padding: 35px 40px 22px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -163,10 +176,39 @@ body {
     margin-bottom: 15px;
 }
 
+.header-headline {
+    font-size: 13pt;
+    font-weight: 300;
+    color: #CFE4F5;
+    margin-bottom: 12px;
+    letter-spacing: 0.02em;
+}
+
 .contact-info {
     font-size: 11pt;
-    line-height: 1.8;
-    margin-bottom: 15px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.contact-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 3px;
+}
+
+.contact-icon-wrap {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    flex-shrink: 0;
+    font-size: 13px;
+}
+
+.contact-icon {
+    width: 14px;
+    height: 14px;
 }
 
 .contact-info a {
@@ -196,9 +238,10 @@ body {
     vertical-align: middle;
 }
 
+
 .header-photo {
-    width: 180px;
-    height: 180px;
+    width: 210px;
+    height: 210px;
     border-radius: 4px;
     object-fit: cover;
     margin-left: 40px;
@@ -318,6 +361,7 @@ h4 {
 }
 
 .job-title {
+    font-size: 9pt;
     margin-bottom: 8px;
 }
 
@@ -349,7 +393,8 @@ h4 {
 
 .about-company-label {
     color: #000;
-    font-weight: normal;
+    font-weight: bold;
+    font-style: normal;
 }
 
 /* Education section */
