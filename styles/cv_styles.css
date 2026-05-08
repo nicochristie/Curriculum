@@ -186,29 +186,8 @@ body {
 
 .contact-info {
     font-size: 11pt;
-    line-height: 1.6;
-    margin-bottom: 10px;
-}
-
-.contact-line {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 3px;
-}
-
-.contact-icon-wrap {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 20px;
-    flex-shrink: 0;
-    font-size: 13px;
-}
-
-.contact-icon {
-    width: 14px;
-    height: 14px;
+    line-height: 1.8;
+    margin-bottom: 15px;
 }
 
 .contact-info a {
@@ -361,7 +340,6 @@ h4 {
 }
 
 .job-title {
-    font-size: 9pt;
     margin-bottom: 8px;
 }
 
@@ -393,8 +371,7 @@ h4 {
 
 .about-company-label {
     color: #000;
-    font-weight: bold;
-    font-style: normal;
+    font-weight: normal;
 }
 
 /* Education section */
