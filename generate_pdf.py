@@ -42,8 +42,8 @@ async def generate_pdf(html_path, pdf_path):
 
 async def main():
     files_to_generate = [
-        ('docs/index.html', 'output/CV Nicolas Christie (en).pdf'),
-        ('docs/cover-letter.html', 'output/CL Nicolas Christie (en).pdf'),
+        ('docs/index.html', 'docs/pdf/CV Nicolas Christie (en).pdf'),
+        ('docs/cover-letter.html', 'docs/pdf/CL Nicolas Christie (en).pdf'),
     ]
 
     all_success = True

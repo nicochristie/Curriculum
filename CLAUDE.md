@@ -23,9 +23,9 @@ playwright install
 python generate_pdf.py
 ```
 
-Generates PDF files:
-- `CV Nicolas Christie (en).pdf`
-- `CL Nicolas Christie (en).pdf`
+Generates PDF files to `docs/pdf/`:
+- `docs/pdf/CV Nicolas Christie (en).pdf`
+- `docs/pdf/CL Nicolas Christie (en).pdf`
 
 ## Technical Details
 
