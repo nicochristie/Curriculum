@@ -1,0 +1,681 @@
+/* ============================================================
+   Nicolás Christie — CV
+   Editorial × tech. A4 print + screen.
+   - Display: Instrument Serif (name)
+   - Body:    IBM Plex Sans
+   - Mono:    JetBrains Mono (metadata, dates, section numbers, stack)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --paper:        #f6f3ec;
+    --paper-2:      #efeadf;
+    --ink:          #111114;
+    --ink-soft:     #2a2a2f;
+    --muted:        #6a6a72;
+    --muted-2:      #9d9aa1;
+    --accent:       #c75327;          /* terracotta */
+    --accent-2:     #8d3a1a;
+    --rule:         #cfc9bb;
+    --rule-soft:    #e3ddcd;
+
+    --serif:        'Instrument Serif', 'Source Serif Pro', Georgia, serif;
+    --sans:         'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+    --mono:         'JetBrains Mono', 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+
+    --max-width:    210mm;
+    --pad-x:        18mm;
+    --pad-y:        16mm;
+}
+
+html, body {
+    background: #d9d4c5;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 9.75pt;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; text-decoration: none; }
+a:hover { color: var(--accent); }
+
+::selection { background: var(--accent); color: var(--paper); }
+
+/* --- Page container ----------------------------------------- */
+.page-container {
+    max-width: var(--max-width);
+    min-height: 297mm;
+    margin: 24px auto;
+    background: var(--paper);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), 0 18px 50px rgba(0,0,0,0.12);
+    overflow: hidden;
+    position: relative;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.cv-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 28px;
+    align-items: end;
+    padding: var(--pad-y) var(--pad-x) 12mm;
+    position: relative;
+    background:
+        radial-gradient(circle at 0 0, rgba(199,83,39,0.05) 0%, transparent 40%),
+        linear-gradient(to bottom, var(--paper-2) 0%, var(--paper) 100%);
+}
+
+.cv-header::after {
+    content: "";
+    position: absolute;
+    left: var(--pad-x);
+    right: var(--pad-x);
+    bottom: 0;
+    height: 2px;
+    background: var(--ink);
+}
+
+.header-content { min-width: 0; }
+
+.preheader {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 7.75pt;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+.preheader .dot {
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.preheader .sep {
+    color: var(--muted-2);
+}
+
+.cv-header h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 58pt;
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+    color: var(--ink);
+    margin-bottom: 12px;
+    white-space: nowrap;
+}
+.cv-header h1 .stop {
+    color: var(--accent);
+    font-style: italic;
+}
+
+.tagline {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 12.5pt;
+    color: var(--ink-soft);
+    line-height: 1.35;
+    margin-bottom: 18px;
+    max-width: 520px;
+}
+.tagline strong {
+    font-weight: 600;
+    color: var(--ink);
+}
+.tagline .accent-line {
+    background-image: linear-gradient(transparent 78%, rgba(199,83,39,0.35) 78%);
+    padding: 0 2px;
+}
+
+.contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    font-family: var(--mono);
+    font-size: 8.25pt;
+    color: var(--ink-soft);
+    letter-spacing: -0.005em;
+}
+.contact-info .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    width: 100%;
+}
+.contact-info .item {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--ink-soft);
+}
+.contact-info .item svg {
+    width: 11px;
+    height: 11px;
+    flex-shrink: 0;
+    stroke: var(--accent);
+}
+.contact-info a {
+    color: var(--ink-soft);
+    border-bottom: 1px dotted var(--muted-2);
+    padding-bottom: 1px;
+    transition: border-color 0.15s, color 0.15s;
+}
+.contact-info a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+.header-photo-wrap {
+    position: relative;
+}
+.header-photo {
+    width: 134px;
+    height: 168px;
+    object-fit: cover;
+    border-radius: 1px;
+    filter: grayscale(0.06) contrast(1.04);
+    display: block;
+}
+.header-photo-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 8px -8px -8px 8px;
+    background: var(--accent);
+    z-index: 0;
+}
+.header-photo-wrap .header-photo {
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================================
+   MAIN CONTENT
+   ============================================================ */
+.main-content {
+    padding: 12mm var(--pad-x) var(--pad-y);
+}
+
+/* Section heading: numbered, with thick top rule */
+.section-head {
+    display: grid;
+    grid-template-columns: 36mm 1fr;
+    gap: 14px;
+    align-items: baseline;
+    border-top: 2px solid var(--ink);
+    padding-top: 8px;
+    margin-bottom: 14px;
+}
+.section-head .num {
+    font-family: var(--mono);
+    font-size: 7.75pt;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+}
+.section-head h2 {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 11pt;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 0;
+}
+
+section.block { margin-top: 22px; }
+section.block:first-of-type { margin-top: 0; }
+
+/* --- Profile (lede) ----------------------------------------- */
+.profile-section {
+    display: grid;
+    grid-template-columns: 36mm 1fr;
+    gap: 14px;
+    font-size: 10pt;
+    line-height: 1.55;
+    color: var(--ink-soft);
+}
+.profile-section .pull {
+    font-family: var(--mono);
+    font-size: 7.75pt;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    line-height: 1.4;
+    padding-top: 4px;
+}
+.profile-section .body {
+    text-align: justify;
+    hyphens: auto;
+}
+.profile-section .lede {
+    font-family: var(--serif);
+    font-size: 16pt;
+    line-height: 1.28;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    font-weight: 400;
+    margin-bottom: 14px;
+    padding-bottom: 4px;
+    text-align: left;
+}
+.profile-section .lede em {
+    color: var(--accent);
+    font-style: italic;
+}
+
+/* ============================================================
+   ENTRIES — timeline rail on the left
+   ============================================================ */
+.entries {
+    display: flex;
+    flex-direction: column;
+}
+
+.entry {
+    display: grid;
+    grid-template-columns: 36mm 1fr;
+    gap: 14px;
+    padding: 14px 0 16px;
+    border-top: 1px solid var(--rule-soft);
+    position: relative;
+}
+.entry:first-child {
+    border-top: none;
+    padding-top: 4px;
+}
+
+/* Left rail: date, location */
+.entry-meta {
+    font-family: var(--mono);
+    font-size: 8.25pt;
+    color: var(--muted);
+    line-height: 1.5;
+    padding-top: 3px;
+    position: relative;
+}
+.entry-meta .date {
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: 0.005em;
+    display: block;
+    margin-bottom: 2px;
+}
+.entry-meta .date .now {
+    color: var(--accent);
+    font-weight: 600;
+}
+.entry-meta .location {
+    color: var(--muted);
+    font-size: 7.75pt;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    display: block;
+}
+.entry-meta .duration {
+    margin-top: 4px;
+    color: var(--muted-2);
+    font-size: 7.5pt;
+    letter-spacing: 0.04em;
+}
+
+.entry-body { min-width: 0; }
+
+/* Top line: company on left, role on right (where location used to float) */
+.entry-head {
+    display: grid;
+    grid-template-columns: minmax(0, auto) 1fr;
+    align-items: baseline;
+    gap: 6px 18px;
+    margin-bottom: 10px;
+}
+.company-name {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 18pt;
+    line-height: 1.05;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+}
+.role-line {
+    font-family: var(--sans);
+    font-size: 9pt;
+    color: var(--ink-soft);
+    line-height: 1.4;
+    text-align: right;
+    min-width: 0;
+}
+.role-line .role {
+    font-weight: 600;
+    color: var(--ink);
+}
+.role-line .secondary {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    color: var(--muted);
+    margin-top: 1px;
+    letter-spacing: 0.005em;
+}
+.role-line .secondary .role {
+    font-weight: 500;
+    color: var(--ink-soft);
+}
+.role-line .sep {
+    color: var(--accent);
+    margin: 0 5px;
+    font-family: var(--mono);
+    font-weight: 500;
+}
+.role-line .qualifier {
+    color: var(--muted);
+    font-style: italic;
+    font-weight: 400;
+}
+
+/* Bullets — terracotta arrow markers */
+.bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 10px;
+}
+.bullets li {
+    position: relative;
+    padding-left: 18px;
+    margin-bottom: 5px;
+    font-size: 9.75pt;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    text-align: justify;
+    hyphens: auto;
+}
+.bullets li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent);
+    font-size: 10pt;
+    line-height: 1.55;
+    font-weight: 600;
+}
+.bullets li strong {
+    font-weight: 600;
+    color: var(--ink);
+}
+
+/* Stack tag — mono caps with bracket */
+.tech-line {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-top: 8px;
+    padding: 6px 10px;
+    background: rgba(199,83,39,0.06);
+    border-left: 2px solid var(--accent);
+    font-family: var(--mono);
+    font-size: 8pt;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    flex-wrap: wrap;
+}
+.tech-line .tech-label {
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 7.5pt;
+    flex-shrink: 0;
+}
+.tech-line .tech-list {
+    color: var(--ink-soft);
+}
+.tech-line .tech-list .sep {
+    color: var(--muted-2);
+    margin: 0 4px;
+}
+
+.about-company {
+    margin-top: 9px;
+    font-size: 8.5pt;
+    color: var(--muted);
+    line-height: 1.5;
+    font-style: italic;
+}
+.about-company .label {
+    color: var(--ink-soft);
+    font-weight: 600;
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-family: var(--mono);
+    font-size: 7.25pt;
+    margin-right: 6px;
+}
+
+/* --- Education --------------------------------------------- */
+.education .entry { padding: 12px 0; }
+.education-school {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 15pt;
+    color: var(--ink);
+    line-height: 1.1;
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+    white-space: normal;
+}
+.education-details {
+    font-size: 9.5pt;
+    color: var(--ink-soft);
+    line-height: 1.45;
+}
+.education-details + .education-details {
+    color: var(--muted);
+    font-size: 9pt;
+    font-style: italic;
+}
+
+/* --- Languages --------------------------------------------- */
+.languages-row {
+    display: grid;
+    grid-template-columns: 36mm 1fr;
+    gap: 14px;
+    align-items: baseline;
+}
+.languages-row .key {
+    font-family: var(--mono);
+    font-size: 7.75pt;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 500;
+}
+.languages-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 26px;
+    font-size: 10pt;
+    color: var(--ink);
+}
+.languages-list .lang-item {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+.languages-list .lang {
+    font-family: var(--serif);
+    font-size: 14pt;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+}
+.languages-list .level {
+    font-family: var(--mono);
+    color: var(--muted);
+    font-weight: 500;
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 2px;
+}
+.languages-list .level .accent { color: var(--accent); }
+
+/* --- Skills ------------------------------------------------ */
+.skills-grid {
+    display: grid;
+    grid-template-columns: 36mm 1fr;
+    column-gap: 14px;
+    row-gap: 14px;
+}
+.skills-grid .skill-key {
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: 7.75pt;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding-top: 4px;
+}
+.skills-grid .skill-key .num {
+    color: var(--muted-2);
+    margin-right: 6px;
+    font-weight: 400;
+}
+.skills-grid .skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px 6px;
+}
+.skill-tag {
+    display: inline-block;
+    padding: 2px 9px;
+    border: 1px solid var(--rule);
+    background: transparent;
+    color: var(--ink-soft);
+    font-family: var(--sans);
+    font-size: 8.5pt;
+    font-weight: 400;
+    line-height: 1.6;
+    border-radius: 2px;
+    white-space: nowrap;
+}
+.skill-tag.featured {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+    font-weight: 500;
+}
+.skill-tag.accent {
+    border-color: var(--accent);
+    color: var(--accent);
+    font-weight: 500;
+}
+
+/* --- Projects --------------------------------------------- */
+.projects .company-name { font-size: 15pt; white-space: normal; }
+.projects .award {
+    font-size: 9.5pt;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin-bottom: 5px;
+    padding-left: 18px;
+    position: relative;
+}
+.projects .award::before {
+    content: "★";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 9pt;
+    top: 1px;
+}
+.projects .award .year {
+    font-family: var(--mono);
+    font-size: 8pt;
+    font-weight: 600;
+    color: var(--ink);
+    margin-right: 4px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+}
+.projects .award .place {
+    font-family: var(--mono);
+    font-size: 7.5pt;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    margin-right: 4px;
+}
+.projects .award em {
+    font-style: italic;
+    color: var(--muted);
+}
+
+/* Footer mark */
+.footer-mark {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 28px;
+    padding-top: 12px;
+    border-top: 1px solid var(--rule-soft);
+    font-family: var(--mono);
+    font-size: 7pt;
+    color: var(--muted-2);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+.footer-mark .accent { color: var(--accent); }
+
+/* ============================================================
+   PRINT — A4
+   ============================================================ */
+@media print {
+    html, body {
+        background: #fff;
+        font-size: 9.75pt;
+    }
+    .page-container {
+        margin: 0;
+        max-width: 100%;
+        min-height: auto;
+        box-shadow: none;
+    }
+    @page {
+        size: A4;
+        margin: 0;
+    }
+    .cv-header {
+        background: #efeadf;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        page-break-after: avoid;
+    }
+    .tech-line, .skill-tag.featured, .skill-tag.accent,
+    .header-photo-wrap::before, .preheader .dot,
+    .cv-header::after, .section-head, .tagline .accent-line {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    .section-head, h2 { page-break-after: avoid; }
+    .entry, .education .entry, .projects .entry { page-break-inside: avoid; }
+    .about-company, .tech-line { page-break-inside: avoid; }
+    a { color: inherit; }
+    .contact-info a { border-bottom-color: transparent; }
+}
