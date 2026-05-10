@@ -3,8 +3,8 @@
 Lightweight CV and Cover Letter project with HTML documents and PDF generation.
 
 **Files:**
-- `CV Nicolas Christie (en).html` - Curriculum Vitae document with embedded styles
-- `CL Nicolas Christie (en).html` - Cover Letter document with embedded styles
+- `index.html` - Curriculum Vitae document with embedded styles
+- `cover-letter.html` - Cover Letter document with embedded styles
 - `generate_pdf.py` - Python script to convert HTML files to PDF using Playwright
 - `styles/cv_styles.css` - Shared stylesheet for both documents
 
