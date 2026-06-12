@@ -41,18 +41,26 @@ async def generate_pdf(html_path, pdf_path):
 
 
 async def main():
-    # File paths
-    html_file = 'CV Nicolas Christie (en).html'
-    pdf_file = 'CV Nicolas Christie (en).pdf'
+    files_to_generate = [
+        ('docs/index.html', 'docs/pdf/CV Nicolas Christie (en).pdf'),
+        ('docs/cover-letter.html', 'docs/pdf/CL Nicolas Christie (en).pdf'),
+    ]
 
-    print(f"Generating PDF from {html_file}...")
+    all_success = True
+    for html_file, pdf_file in files_to_generate:
+        print(f"Generating PDF from {html_file}...")
+        success = await generate_pdf(html_file, pdf_file)
 
-    success = await generate_pdf(html_file, pdf_file)
+        if success:
+            print(f"PDF generated successfully: {os.path.abspath(pdf_file)}")
+        else:
+            print(f"PDF generation failed for {html_file}!")
+            all_success = False
 
-    if success:
-        print(f"PDF generated successfully: {os.path.abspath(pdf_file)}")
+    if all_success:
+        print("\nAll PDFs generated successfully!")
     else:
-        print("PDF generation failed!")
+        print("\nSome PDF generations failed.")
 
 
 if __name__ == '__main__':
