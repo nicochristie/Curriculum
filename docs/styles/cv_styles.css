@@ -88,16 +88,16 @@ body {
     /* Extend header to bleed beyond margins */
     .cv-header {
         margin: 0 -20mm 0 -20mm;
-        padding: 16px 55px;
+        padding: 14px 55px;
     }
 
     .cv-header h1 {
         font-size: 24pt;
-        margin-bottom: 6px;
+        margin-bottom: 0;
+        margin-left: 80px;
     }
 
-    .header-content {
-        margin-left: 80px;
+    .cv-header .cl-contact-compact {
         margin-right: 80px;
     }
 
@@ -180,42 +180,18 @@ body {
 .cv-header {
     background: #455A64;
     color: #fff;
-    padding: 22px 40px;
+    padding: 20px 40px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-}
-
-.header-content {
-    flex: 1;
+    align-items: flex-start;
+    gap: 24px;
 }
 
 .cv-header h1 {
     font-size: 28pt;
     font-weight: bold;
-    margin-bottom: 8px;
-}
-
-.contact-info {
-    font-size: 10pt;
-    line-height: 1.5;
-}
-
-.contact-info a {
-    color: #AFD2EF;
-    text-decoration: underline;
-}
-
-.contact-columns {
-    display: flex;
-    gap: 48px;
-}
-
-.contact-left,
-.contact-right {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+    flex-shrink: 0;
+    margin-bottom: 0;
 }
 
 /* Compact cover-letter header */
@@ -660,34 +636,26 @@ h4 {
         box-shadow: none;
     }
 
-    /* Header: stack contact columns vertically on mobile */
+    /* Header: stack name above contact on mobile */
     .cv-header {
         flex-direction: column;
         align-items: center;
         text-align: center;
         padding: 20px;
-        gap: 12px;
+        gap: 10px;
     }
 
     .cv-header h1 {
         font-size: 20pt;
-        margin-bottom: 8px;
+        margin-bottom: 0;
     }
 
-    .contact-info {
-        font-size: 9pt;
-        line-height: 1.6;
-        margin-bottom: 8px;
-    }
-
-    .contact-columns {
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .contact-left,
-    .contact-right {
+    .cv-header .cl-contact-compact {
         align-items: center;
+    }
+
+    .cv-header .cl-contact-line {
+        justify-content: center;
     }
 
     /* Reduce main content padding */
