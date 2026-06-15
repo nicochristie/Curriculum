@@ -432,20 +432,11 @@ h4 {
 
 /* Languages section */
 .languages-section {
-    display: grid;
-    grid-template-columns: 135px 20px 1fr;
-    margin-left: 20px;
     margin-bottom: 20px;
-    align-items: baseline;
-}
-
-.languages-label {
-    font-weight: bold;
-    font-size: 12pt;
 }
 
 .languages-content {
-    padding-left: 15px;
+    line-height: 1.5;
 }
 
 /* Skills section */
@@ -546,7 +537,6 @@ h4 {
 /* Professional profile summary */
 .profile-section {
     margin-bottom: 15px;
-    margin-left: 20px;
     text-align: justify;
     line-height: 1.5;
 }
@@ -748,16 +738,8 @@ h4 {
         margin-bottom: 6px;
     }
 
-    /* Languages: collapse grid */
     .languages-section {
-        display: block;
-        margin-left: 0;
         margin-bottom: 16px;
-    }
-
-    .languages-content {
-        padding-left: 0;
-        margin-top: 4px;
     }
 
     /* Compact CL header on mobile */
