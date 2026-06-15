@@ -92,7 +92,7 @@ body {
     }
 
     .cv-header h1 {
-        font-size: 24pt;
+        font-size: 22pt;
         margin-bottom: 0;
         margin-left: 80px;
     }
@@ -101,15 +101,18 @@ body {
         margin-right: 80px;
     }
 
-    /* Compact CL header print overrides */
+    /* CL header: no bleed, undo CV margin compensation */
     .cl-header {
         margin: 0;
         padding: 22px 40px;
     }
 
     .cl-header h1 {
-        font-size: 22pt;
-        margin-bottom: 0;
+        margin-left: 0;
+    }
+
+    .cl-header .cl-contact-compact {
+        margin-right: 0;
     }
 
     .contact-info {
@@ -180,17 +183,18 @@ body {
 .cv-header {
     background: #455A64;
     color: #fff;
-    padding: 20px 40px;
+    padding: 24px 40px;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     gap: 24px;
 }
 
 .cv-header h1 {
-    font-size: 28pt;
+    font-size: 22pt;
     font-weight: bold;
     flex-shrink: 0;
+    white-space: nowrap;
     margin-bottom: 0;
 }
 
@@ -646,8 +650,9 @@ h4 {
     }
 
     .cv-header h1 {
-        font-size: 20pt;
+        font-size: 18pt;
         margin-bottom: 0;
+        white-space: normal;
     }
 
     .cv-header .cl-contact-compact {
