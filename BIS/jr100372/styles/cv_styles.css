@@ -101,20 +101,6 @@ body {
         margin-right: 80px;
     }
 
-    /* CL header: no bleed, undo CV margin compensation */
-    .cl-header {
-        margin: 0;
-        padding: 22px 40px;
-    }
-
-    .cl-header h1 {
-        margin-left: 0;
-    }
-
-    .cl-header .cl-contact-compact {
-        margin-right: 0;
-    }
-
     .contact-info {
         font-size: 9.5pt;
         line-height: 1.5;
@@ -167,7 +153,7 @@ body {
     }
 
     .languages-section {
-        margin-bottom: 15px;
+        margin-bottom: 0;
     }
 
     .skills-section {
