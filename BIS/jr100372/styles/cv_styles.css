@@ -65,11 +65,11 @@ body {
 
     @page {
         size: A4;
-        margin: 15mm -1mm 15mm -1mm;
+        margin: 10mm -1mm 10mm -1mm;
     }
 
     @page :first {
-        margin: -1mm -1mm 15mm -1mm;
+        margin: -1mm -1mm 10mm -1mm;
     }
 
     .no-print {
@@ -112,8 +112,8 @@ body {
 
     h2 {
         font-size: 13pt;
-        margin-top: 6px;
-        margin-bottom: 6px;
+        margin-top: 4px;
+        margin-bottom: 4px;
     }
 
     h3 {
@@ -124,7 +124,7 @@ body {
 
     .job-entry,
     .education-entry {
-        margin-bottom: 8px;
+        margin-bottom: 6px;
     }
 
     .company-name {
@@ -132,11 +132,11 @@ body {
     }
 
     .job-tech {
-        margin-bottom: 6px;
+        margin-bottom: 4px;
     }
 
     .about-company {
-        margin-bottom: 6px;
+        margin-bottom: 4px;
     }
 
     .skill-category {
@@ -157,11 +157,15 @@ body {
     }
 
     .skills-section {
-        margin-bottom: 8px;
+        margin-bottom: 4px;
     }
 
     .profile-section {
-        margin-bottom: 8px;
+        margin-bottom: 4px;
+    }
+
+    body {
+        line-height: 1.3;
     }
 }
 
