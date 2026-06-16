@@ -50,121 +50,6 @@ body {
     stroke: #fff;
 }
 
-/* Print styles */
-@media print {
-    .download-btn { display: none !important; }
-    body {
-        margin: 0;
-        padding: 0;
-    }
-
-    .page-container {
-        max-width: 100%;
-        margin: 0;
-    }
-
-    @page {
-        size: A4;
-        margin: 15mm -1mm 15mm -1mm;
-    }
-
-    @page :first {
-        margin: -1mm -1mm 15mm -1mm;
-    }
-
-    .no-print {
-        display: none;
-    }
-
-    h2 {
-        page-break-after: avoid;
-    }
-
-    .job-entry,
-    .education-entry {
-        page-break-inside: avoid;
-    }
-
-    /* Extend header to bleed beyond margins */
-    .cv-header {
-        margin: 0 -20mm 0 -20mm;
-        padding: 14px 55px;
-    }
-
-    .cv-header h1 {
-        font-size: 22pt;
-        margin-bottom: 0;
-        margin-left: 80px;
-    }
-
-    .cv-header .cl-contact-compact {
-        margin-right: 80px;
-    }
-
-    .contact-info {
-        font-size: 9.5pt;
-        line-height: 1.5;
-    }
-
-    .main-content {
-        padding: 10px 10px;
-    }
-
-    h2 {
-        font-size: 13pt;
-        margin-top: 6px;
-        margin-bottom: 6px;
-    }
-
-    h3 {
-        font-size: 11pt;
-        margin-top: 15px;
-        margin-bottom: 8px;
-    }
-
-    .job-entry,
-    .education-entry {
-        margin-bottom: 8px;
-    }
-
-    .company-name {
-        font-size: 11pt;
-    }
-
-    .job-tech {
-        margin-bottom: 6px;
-    }
-
-    .about-company {
-        margin-bottom: 6px;
-    }
-
-    .skill-category {
-        display: grid;
-        grid-template-columns: 150px 1fr;
-        column-gap: 12px;
-        margin-bottom: 3px;
-        align-items: start;
-    }
-
-    .skill-tag {
-        padding: 2px 7px;
-        font-size: 9pt;
-    }
-
-    .languages-section {
-        margin-bottom: 0;
-    }
-
-    .skills-section {
-        margin-bottom: 8px;
-    }
-
-    .profile-section {
-        margin-bottom: 8px;
-    }
-}
-
 /* Header section */
 .cv-header {
     background: #455A64;
@@ -814,4 +699,104 @@ h4 {
 .cover-letter-sign .sign-contact a {
     color: #455A64;
     text-decoration: underline;
+}
+
+/* Print styles
+   NOTE: placed at the end of the file on purpose. These selectors share
+   equal specificity with the unconditional base rules above; a later
+   block wins ties in the cascade regardless of @media, so this has to
+   come last to actually take effect (the previous copy near the top of
+   this file was silently shadowed by the base rules and never applied). */
+@media print {
+    .download-btn { display: none !important; }
+    body {
+        margin: 0;
+        padding: 0;
+        line-height: 1.5;
+    }
+
+    .page-container {
+        max-width: 100%;
+        margin: 0;
+    }
+
+    @page {
+        size: A4;
+        margin: 15mm -1mm 15mm -1mm;
+    }
+
+    @page :first {
+        margin: -1mm -1mm 15mm -1mm;
+    }
+
+    .no-print {
+        display: none;
+    }
+
+    h2 {
+        page-break-after: avoid;
+    }
+
+    .job-entry,
+    .education-entry {
+        page-break-inside: avoid;
+    }
+
+    /* Extend header to bleed beyond margins */
+    .cv-header {
+        margin: 0 -20mm 0 -20mm;
+        padding: 16px 55px;
+    }
+
+    .cv-header h1 {
+        font-size: 22pt;
+        margin-bottom: 0;
+        margin-left: 80px;
+    }
+
+    .cv-header .cl-contact-compact {
+        margin-right: 80px;
+    }
+
+    .main-content {
+        padding: 34px 40px;
+    }
+
+    h2 {
+        font-size: 16pt;
+        margin-top: 14px;
+        margin-bottom: 18px;
+    }
+
+    h3 {
+        font-size: 13pt;
+        margin-top: 22px;
+        margin-bottom: 14px;
+    }
+
+    .job-entry,
+    .education-entry {
+        margin-bottom: 20px;
+    }
+
+    .job-tech {
+        margin-bottom: 8px;
+    }
+
+    .about-company {
+        margin-top: 8px;
+        margin-bottom: 14px;
+    }
+
+    .skill-category {
+        margin-bottom: 12px;
+    }
+
+    .skills-section {
+        margin-bottom: 18px;
+    }
+
+    .profile-section {
+        margin-bottom: 20px;
+    }
 }
