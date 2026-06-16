@@ -112,8 +112,8 @@ body {
 
     h2 {
         font-size: 13pt;
-        margin-top: 10px;
-        margin-bottom: 8px;
+        margin-top: 6px;
+        margin-bottom: 6px;
     }
 
     h3 {
@@ -124,7 +124,7 @@ body {
 
     .job-entry,
     .education-entry {
-        margin-bottom: 12px;
+        margin-bottom: 8px;
     }
 
     .company-name {
@@ -136,7 +136,7 @@ body {
     }
 
     .about-company {
-        margin-bottom: 10px;
+        margin-bottom: 6px;
     }
 
     .skill-category {
