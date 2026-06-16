@@ -50,19 +50,24 @@ async def generate_pdf(html_path, pdf_path):
         file_url = f'file:///{os.path.abspath(html_path).replace(os.sep, "/")}'
         await page.goto(file_url, wait_until='networkidle')
 
-        # Append a tiny version stamp as the last element so it lands near the
-        # bottom of the last page without affecting earlier page breaks.
+        # Overlay a tiny version stamp at the bottom-right of the content box.
+        # Absolute positioning takes it out of the flow entirely, so it adds
+        # zero height and can never push content onto an extra page.
         await page.evaluate(
             """(label) => {
+                const container = document.querySelector('.main-content');
+                if (!container) return;
+                const style = getComputedStyle(container).position;
+                if (style === 'static') container.style.position = 'relative';
                 const el = document.createElement('div');
                 el.textContent = label;
-                el.style.textAlign = 'right';
+                el.style.position = 'absolute';
+                el.style.bottom = '0';
+                el.style.right = '10px';
                 el.style.fontSize = '6pt';
-                el.style.color = '#bbb';
-                el.style.marginTop = '6px';
-                el.style.marginRight = '10px';
-                const container = document.querySelector('.main-content');
-                if (container) container.appendChild(el);
+                el.style.lineHeight = '1';
+                el.style.color = '#ccc';
+                container.appendChild(el);
             }""",
             get_version_label()
         )
