@@ -5,39 +5,11 @@ Converts the HTML CV to PDF using Playwright
 
 import os
 import asyncio
-import re
-import subprocess
 from playwright.async_api import async_playwright
-
-MAX_PAGES = 2
-SCALE_STEPS = [1.0, 0.97, 0.94, 0.91, 0.88, 0.85]
-
-
-def get_version_label():
-    """Build a small stamp (git short SHA) so a regenerated PDF can be told apart from a previous one."""
-    try:
-        sha = subprocess.check_output(
-            ['git', 'rev-parse', '--short', 'HEAD'], stderr=subprocess.DEVNULL
-        ).decode().strip()
-    except Exception:
-        sha = 'dev'
-    return f"v{sha}"
-
-
-def count_pdf_pages(pdf_path):
-    """Dependency-free page count: the page-tree root declares /Count N,
-    where N is the total number of leaf pages."""
-    with open(pdf_path, 'rb') as f:
-        data = f.read()
-    match = re.search(rb'/Type\s*/Pages.{0,200}?/Count\s+(\d+)', data, re.DOTALL)
-    if not match:
-        match = re.search(rb'/Count\s+(\d+).{0,200}?/Type\s*/Pages', data, re.DOTALL)
-    return int(match.group(1)) if match else None
 
 
 async def generate_pdf(html_path, pdf_path):
-    """Generate PDF from HTML file, shrinking the render scale as needed to
-    stay within MAX_PAGES."""
+    """Generate PDF from HTML file"""
     if not os.path.exists(html_path):
         print(f"Error: HTML file not found at {html_path}")
         return False
@@ -50,29 +22,8 @@ async def generate_pdf(html_path, pdf_path):
         file_url = f'file:///{os.path.abspath(html_path).replace(os.sep, "/")}'
         await page.goto(file_url, wait_until='networkidle')
 
-        # Overlay a tiny version stamp at the bottom-right of the content box.
-        # Absolute positioning takes it out of the flow entirely, so it adds
-        # zero height and can never push content onto an extra page.
-        await page.evaluate(
-            """(label) => {
-                const container = document.querySelector('.main-content');
-                if (!container) return;
-                const style = getComputedStyle(container).position;
-                if (style === 'static') container.style.position = 'relative';
-                const el = document.createElement('div');
-                el.textContent = label;
-                el.style.position = 'absolute';
-                el.style.bottom = '0';
-                el.style.right = '10px';
-                el.style.fontSize = '6pt';
-                el.style.lineHeight = '1';
-                el.style.color = '#ccc';
-                container.appendChild(el);
-            }""",
-            get_version_label()
-        )
-
-        pdf_kwargs = dict(
+        # Generate PDF with print settings
+        await page.pdf(
             path=pdf_path,
             format='A4',
             print_background=True,
@@ -83,16 +34,6 @@ async def generate_pdf(html_path, pdf_path):
                 'left': '0mm'
             }
         )
-
-        for scale in SCALE_STEPS:
-            await page.pdf(scale=scale, **pdf_kwargs)
-            pages = count_pdf_pages(pdf_path)
-            if pages is not None and pages <= MAX_PAGES:
-                if scale != SCALE_STEPS[0]:
-                    print(f"  Note: scaled to {scale} to fit within {MAX_PAGES} pages.")
-                break
-        else:
-            print(f"  Warning: still over {MAX_PAGES} pages at minimum scale ({SCALE_STEPS[-1]}).")
 
         await browser.close()
 
