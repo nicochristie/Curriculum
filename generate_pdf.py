@@ -5,7 +5,21 @@ Converts the HTML CV to PDF using Playwright
 
 import os
 import asyncio
+import subprocess
+from datetime import datetime, timezone
 from playwright.async_api import async_playwright
+
+
+def get_version_label():
+    """Build a small stamp (git short SHA + UTC timestamp) so a regenerated PDF can be told apart from a previous one."""
+    try:
+        sha = subprocess.check_output(
+            ['git', 'rev-parse', '--short', 'HEAD'], stderr=subprocess.DEVNULL
+        ).decode().strip()
+    except Exception:
+        sha = 'dev'
+    timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')
+    return f"v{sha} · {timestamp}"
 
 
 async def generate_pdf(html_path, pdf_path):
@@ -21,6 +35,23 @@ async def generate_pdf(html_path, pdf_path):
         # Load the HTML file
         file_url = f'file:///{os.path.abspath(html_path).replace(os.sep, "/")}'
         await page.goto(file_url, wait_until='networkidle')
+
+        # Append a tiny version stamp as the last element so it lands near the
+        # bottom of the last page without affecting earlier page breaks.
+        await page.evaluate(
+            """(label) => {
+                const el = document.createElement('div');
+                el.textContent = label;
+                el.style.textAlign = 'right';
+                el.style.fontSize = '6pt';
+                el.style.color = '#bbb';
+                el.style.marginTop = '6px';
+                el.style.marginRight = '10px';
+                const container = document.querySelector('.main-content');
+                if (container) container.appendChild(el);
+            }""",
+            get_version_label()
+        )
 
         # Generate PDF with print settings
         await page.pdf(
