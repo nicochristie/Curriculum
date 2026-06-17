@@ -11,7 +11,8 @@
       "Bash(copy \"CV Nicolas Christie (en).docx\" \"cv-converter\\input\\cv.docx\")",
       "Bash(venv/Scripts/python.exe:*)",
       "Bash(python:*)",
-      "Bash(playwright install:*)"
+      "Bash(playwright install:*)",
+      "mcp__2b769cb6-07a8-4122-a47c-96451883d034__get_resume"
     ],
     "deny": [],
     "ask": []

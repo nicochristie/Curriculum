@@ -1,52 +1,45 @@
-1. Project Setup
+## Project Overview
 
-```
-mkdir cv-converter
-cd cv-converter
-python -m venv venv
-venv\Scripts\activate
-pip install python-docx jinja2 playwright
-```
+Lightweight CV and Cover Letter project with HTML documents and PDF generation.
 
-2. Architecture
-```
-cv-converter/
-├── cv_parser.py          # Extract structure from .docx
-├── html_generator.py     # Generate HTML from parsed data
-├── templates/
-│   └── cv_template.html  # Jinja2 template with CSS
-├── input/
-│   └── cv.docx          # Source document
-└── output/
-    ├── cv.html          # Generated HTML
-    └── cv.pdf           # Final PDF (optional)
+**Files:**
+- `docs/index.html` - Curriculum Vitae document
+- `docs/cover-letter.html` - Cover Letter document
+- `docs/styles/cv_styles.css` - Shared stylesheet for both documents
+- `docs/media/header-photo.jpg` - Profile photo used in the CV header
+- `generate_pdf.py` - Python script to convert HTML files to PDF using Playwright
+
+## Setup
+
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install playwright
+playwright install
 ```
 
+## Connect to venv
 
-3. Development Steps
-Step 1: Parse Word document
+```powershell
+# PowerShell
+.venv\Scripts\Activate.ps1
 
-Extract paragraphs, runs (text formatting)
-Identify structure (headings, bullets, bold/italic)
-Store in data structure (dict/class)
+# Command Prompt
+.venv\Scripts\activate.bat
+```
 
-Step 2: Generate HTML
+## Usage
 
-Map Word styles to semantic HTML tags
-Apply custom CSS for precise formatting
-Use Jinja2 for template rendering
+```powershell
+python generate_pdf.py
+```
 
-Step 3: Convert to PDF (optional)
+Generates PDF files to `docs/pdf/`:
+- `docs/pdf/CV Nicolas Christie (en).pdf`
+- `docs/pdf/CL Nicolas Christie (en).pdf`
 
-Use Playwright's PDF export
-Maintains CSS exactly as browser renders
+## Technical Details
 
-4. Key Parsing Considerations
-
-Word paragraph styles → HTML semantic tags (h1, h2, p)
-Bold/italic runs → <strong>, <em>
-Tables → <table>
-Bullets/numbering → <ul>, <ol>
-
-5. Alternative: C# approach
-Would use DocumentFormat.OpenXml + Razor templates, but more setup overhead on Windows.
+- **HTML to PDF conversion**: Uses Playwright for browser-based rendering
+- **Format**: A4 with zero margins to preserve exact layout
+- **CSS support**: Full CSS styling preserved in PDF output
