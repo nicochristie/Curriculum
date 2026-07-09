@@ -96,8 +96,13 @@ async def generate_pdf(html_path, pdf_path, target_pages):
         print(f"Error: HTML file not found at {html_path}")
         return False
 
+    launch_kwargs = {}
+    _chromium_path = os.environ.get('PW_CHROMIUM_PATH')
+    if _chromium_path and os.path.exists(_chromium_path):
+        launch_kwargs['executable_path'] = _chromium_path
+
     async with async_playwright() as p:
-        browser = await p.chromium.launch()
+        browser = await p.chromium.launch(**launch_kwargs)
         page = await browser.new_page()
 
         # Load the HTML file
